@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Drawing;
@@ -19,7 +19,7 @@ using ZXing.Mobile;
 
 namespace ZXing.Mobile
 {
-	public class ZXingScannerView : UIView, IZXingScanner<UIView>, IScannerSessionHost
+	public class ZXingScannerView : BaseiOSScannerView
 	{
 		public delegate void ScannerSetupCompleteDelegate();
 		public event ScannerSetupCompleteDelegate OnScannerSetupComplete;
@@ -47,12 +47,12 @@ namespace ZXing.Mobile
 		UIView layerView;
 		UIView overlayView = null;
 
-		public MobileBarcodeScanningOptions ScanningOptions { get; set; }
+		public override MobileBarcodeScanningOptions ScanningOptions { get; set; }
 
-        public event Action OnCancelButtonPressed;
+        public override event Action OnCancelButtonPressed;
 
-		public string CancelButtonText { get;set; }
-		public string FlashButtonText { get;set; }
+		public override string CancelButtonText { get;set; }
+		public override string FlashButtonText { get;set; }
 
 		bool shouldRotatePreviewBuffer = false;
 
@@ -107,7 +107,7 @@ namespace ZXing.Mobile
 		bool analyzing = true;
 	
 
-		bool SetupCaptureSession ()
+		public override bool SetupCaptureSession ()
 		{
 			var started = DateTime.UtcNow;
 
@@ -352,7 +352,7 @@ namespace ZXing.Mobile
 			return true;
 		}
 
-		public void DidRotate(UIInterfaceOrientation orientation)
+		public override void DidRotate(UIInterfaceOrientation orientation)
 		{
 			ResizePreview (orientation);
 
@@ -362,7 +362,7 @@ namespace ZXing.Mobile
 			//	overlayView.LayoutSubviews ();
 		}
 
-		public void ResizePreview (UIInterfaceOrientation orientation)
+		public override void ResizePreview (UIInterfaceOrientation orientation)
 		{
 			shouldRotatePreviewBuffer = orientation == UIInterfaceOrientation.Portrait || orientation == UIInterfaceOrientation.PortraitUpsideDown;
 
@@ -517,7 +517,7 @@ namespace ZXing.Mobile
 		}
 	
 		#region IZXingScanner implementation
-        public void StartScanning (Action<Result> scanResultHandler, MobileBarcodeScanningOptions options = null)
+        public override void StartScanning (Action<Result> scanResultHandler, MobileBarcodeScanningOptions options = null)
 		{
 			if (!stopped)
 				return;
@@ -561,7 +561,7 @@ namespace ZXing.Mobile
 				evt ();
 		}
 		
-		public void StopScanning()
+		public override void StopScanning()
 		{
 			if (overlayView != null) {
 				if (overlayView is ZXingDefaultOverlayView)
@@ -600,17 +600,17 @@ namespace ZXing.Mobile
 			stopped = true;
 		}
 
-		public void PauseAnalysis ()
+		public override void PauseAnalysis ()
 		{
 			analyzing = false;
 		}
 
-		public void ResumeAnalysis ()
+		public override void ResumeAnalysis ()
 		{
 			analyzing = true;
 		}
 
-		public void Torch (bool on)
+		public override void Torch (bool on)
 		{
 			try
 			{
@@ -647,32 +647,32 @@ namespace ZXing.Mobile
 			catch { }
 		}
 
-		public void ToggleTorch()
+		public override void ToggleTorch()
 		{
 			Torch(!IsTorchOn);
 		}
 
-		public void AutoFocus ()
+		public override void AutoFocus ()
 		{
 			//Doesn't do much on iOS :(
 		}
 
-        public void AutoFocus (int x, int y)
+        public override void AutoFocus (int x, int y)
         {
             //Doesn't do much on iOS :(
         }
 
-		public string TopText { get;set; }
-		public string BottomText { get;set; }
+		public override string TopText { get;set; }
+		public override string BottomText { get;set; }
 
 
-		public UIView CustomOverlayView { get; set; }
-		public bool UseCustomOverlayView { get; set; }
-		public bool IsAnalyzing { get { return analyzing; } }
-		public bool IsTorchOn { get { return torch; } }
+		public override UIView CustomOverlayView { get; set; }
+		public override bool UseCustomOverlayView { get; set; }
+		public override bool IsAnalyzing { get { return analyzing; } }
+		public override bool IsTorchOn { get { return torch; } }
 
         bool? hasTorch = null;
-        public bool HasTorch {
+        public override bool HasTorch {
             get {
                 if (hasTorch.HasValue)
                     return hasTorch.Value;
