@@ -1,15 +1,10 @@
-# ZXing.Net.Mobile
+# (StyleTech Modified) ZXing.Net.Mobile
 
-[![Join the chat at https://gitter.im/Redth/ZXing.Net.Mobile](https://badges.gitter.im/Redth/ZXing.Net.Mobile.svg)](https://gitter.im/Redth/ZXing.Net.Mobile?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+This is a modified version of https://github.com/Redth/ZXing.Net.Mobile as the library has become somewhat stale. This version has several xamarin forms specific fixes incorporated. 
 
 ![ZXing.Net.Mobile Logo](https://raw.github.com/Redth/ZXing.Net.Mobile/master/zxing.net.mobile_128x128.png)
 
 ZXing.Net.Mobile is a C#/.NET library based on the open source Barcode Library: [ZXing (Zebra Crossing)](https://github.com/zxing/zxing), using the [ZXing.Net Port](https://github.com/micjahn/ZXing.Net).  It works with Xamarin.iOS, Xamarin.Android, and Windows Phone.  The goal of ZXing.Net.Mobile is to make scanning barcodes as effortless and painless as possible in your own applications.  The new iOS7 AVCaptureSession barcode scanning is now also supported!
-
-![AppVeyor CI Status](https://ci.appveyor.com/api/projects/status/github/Redth/ZXing.Net.Mobile?branch=master&svg=true)
-[![Bitrise CI Status](https://www.bitrise.io/app/379eeea5b638f470.svg?token=jEVeMXcISnOVDlVxcxl9Lg&branch=master)](https://www.bitrise.io/app/379eeea5b638f470)
-[![NuGet](https://img.shields.io/nuget/v/ZXing.Net.Mobile.svg)](https://www.nuget.org/packages/ZXing.Net.Mobile/)
-[![NuGet](https://img.shields.io/nuget/dt/ZXing.Net.Mobile.svg)](https://www.nuget.org/packages/ZXing.Net.Mobile/)
 
 ### Usage
 The simplest example of using ZXing.Net.Mobile looks something like this:
