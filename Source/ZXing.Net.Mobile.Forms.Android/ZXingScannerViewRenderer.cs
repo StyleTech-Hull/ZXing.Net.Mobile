@@ -7,13 +7,9 @@ using Android.App;
 using Xamarin.Forms.Platform.Android;
 using Android.Views;
 using System.ComponentModel;
-using System.Reflection;
-using Android.Widget;
 using ZXing.Mobile;
 using System.Threading.Tasks;
-using System.Linq.Expressions;
 using Android.Content;
-using Plugin.CurrentActivity;
 
 [assembly: ExportRenderer(typeof(ZXingScannerView), typeof(ZXingScannerViewRenderer))]
 namespace ZXing.Net.Mobile.Forms.Android
@@ -22,15 +18,10 @@ namespace ZXing.Net.Mobile.Forms.Android
 	public class ZXingScannerViewRenderer : ViewRenderer<ZXingScannerView, ZXing.Mobile.ZXingSurfaceView>
 	{
 		private Context appContext;
-		public ZXingScannerViewRenderer() : base(CrossCurrentActivity.Current.AppContext) { }
-		public ZXingScannerViewRenderer(IntPtr a, JniHandleOwnership b) : base(CrossCurrentActivity.Current.AppContext) { }
 		public ZXingScannerViewRenderer(Context context) : base(context)
 		{
 			appContext = context;
 		}
-		//public ZXingScannerViewRenderer () : base ()
-		//{
-		//}
 
 		public static void Init()
 		{
