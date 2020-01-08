@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
-        <id>ZXing.Net.Mobile.Forms</id>
+        <id>StyleTech.ZXing.Net.Mobile.Forms</id>
         <version>$version$</version>
         <title>ZXing.Net.Mobile Barcode Scanner for Xamarin.Forms</title>
-        <authors>Redth</authors>
+        <authors>Redth, StyleTech</authors>
         <licenseUrl>http://raw.github.com/Redth/ZXing.Net.Mobile/master/License.md</licenseUrl>
         <projectUrl>http://github.com/Redth/ZXing.Net.Mobile</projectUrl>
         <iconUrl>http://raw.github.com/Redth/ZXing.Net.Mobile/master/Art/ZXing.Net.Mobile-Icon.png</iconUrl>
@@ -37,6 +37,7 @@
                 <dependency id="Xamarin.Forms" version="2.5.0.122203" />
             </group>
             <group targetFramework="MonoAndroid10">
+                <dependency id="ZXing.Net.Mobile" version="$version$" />
                 <dependency id="Xamarin.Android.Support.v4" version="25.4.0.2" />
                 <dependency id="FastAndroidCamera" version="2.0.0" />
             </group>
@@ -45,6 +46,8 @@
                 <dependency id="Xamarin.Forms" version="2.5.0.122203" />
             </group>
             <group targetFramework="Xamarin.Mac20">
+                <dependency id="ZXing.Net.Xamarin" version="$version$" />
+                <dependency id="Xamarin.Forms" version="2.5.0.122203" />
             </group>
             <group targetFramework="portable-net45+win+wpa81+wp80">
                 <dependency id="ZXing.Net.Mobile" version="$version$" />
@@ -70,14 +73,18 @@
         <!-- iOS Unified API -->
         <file src="Build/Forms/Release/ios-unified/ZXing.Net.Mobile.Forms.dll" target="lib\Xamarin.iOS10\ZXing.Net.Mobile.Forms.dll" />
         <file src="Build/Forms/Release/ios-unified/ZXing.Net.Mobile.Forms.iOS.dll" target="lib\Xamarin.iOS10\ZXing.Net.Mobile.Forms.iOS.dll" />
+
+        <!-- Xamarin.Mac API -->
+        <file src="Build/Forms/Release/xammac/ZXing.Net.Mobile.Forms.dll" target="lib\Xamarin.Mac\ZXing.Net.Mobile.Forms.dll" />
+        <file src="Build/Forms/Release/xammac/ZXing.Net.Mobile.Forms.macOS.dll" target="lib\Xamarin.Mac\ZXing.Net.Mobile.Forms.macOS.dll" />
         
         <!-- Windows RT / Store  -->
         <!-- Not supported -->
 
         <!-- Windows Universal  -->
-        <file src="Build/Forms/Release/uwp/ZXing.Net.Mobile.Forms.dll" target="lib\UAP10\ZXing.Net.Mobile.Forms.dll" />
+        <!-- <file src="Build/Forms/Release/uwp/ZXing.Net.Mobile.Forms.dll" target="lib\UAP10\ZXing.Net.Mobile.Forms.dll" />
         <file src="Build/Forms/Release/uwp/ZXing.Net.Mobile.Forms.WindowsUniversal.dll" target="lib\UAP10\ZXing.Net.Mobile.Forms.WindowsUniversal.dll" />
-        <file src="Build/Forms/Release/uwp/ZXing.Net.Mobile.Forms.WindowsUniversal.pri" target="lib\UAP10\ZXing.Net.Mobile.Forms.WindowsUniversal.pri" />
+        <file src="Build/Forms/Release/uwp/ZXing.Net.Mobile.Forms.WindowsUniversal.pri" target="lib\UAP10\ZXing.Net.Mobile.Forms.WindowsUniversal.pri" /> -->
 
         <!-- NetStandard 1.0+ -->
         <file src="Build/Forms/Release/portable/ZXing.Net.Mobile.Forms.dll" target="lib\netstandard1.0\ZXing.Net.Mobile.Forms.dll" />

@@ -9,7 +9,7 @@
 #addin nuget:?package=Cake.MonoApiTools
 
 var PREVIEW = "";
-var VERSION = EnvironmentVariable ("APPVEYOR_BUILD_VERSION") ?? Argument("version", "0.0.0");
+var VERSION = EnvironmentVariable ("APPVEYOR_BUILD_VERSION") ?? Argument("n_version", "0.0.0");
 var NUGET_VERSION_SUFFIX = "";
 var NUGET_VERSION = VERSION + NUGET_VERSION_SUFFIX;
 
@@ -53,7 +53,7 @@ Task ("samples")
 	NuGetRestore ("./Samples/Android/Sample.Android.sln");
 	NuGetRestore ("./Samples/iOS/Sample.iOS.sln");
 	NuGetRestore ("./Samples/Forms/Sample.Forms.sln");
-	NuGetRestore ("./Samples/WindowsUniversal/Sample.WindowsUniversal.sln");
+	// NuGetRestore ("./Samples/WindowsUniversal/Sample.WindowsUniversal.sln");
 
 	var config = "Release";
 	MSBuild ("./Samples/Android/Sample.Android.sln", c => c.SetConfiguration(config).SetMSBuildPlatform(MSBuildPlatform.x86));
@@ -61,7 +61,7 @@ Task ("samples")
 
 	if (IsRunningOnWindows()) {
 		MSBuild ("./Samples/Forms/Sample.Forms.sln", c => c.SetConfiguration(config).SetMSBuildPlatform(MSBuildPlatform.x86));
-		MSBuild ("./Samples/WindowsUniversal/Sample.WindowsUniversal.sln", c => c.SetConfiguration(config).SetMSBuildPlatform(MSBuildPlatform.x86));
+		// MSBuild ("./Samples/WindowsUniversal/Sample.WindowsUniversal.sln", c => c.SetConfiguration(config).SetMSBuildPlatform(MSBuildPlatform.x86));
 	}
 });
 
@@ -79,6 +79,9 @@ Task ("clean")
 	CleanDirectories ("./**/bin");
 	CleanDirectories ("./**/obj");
 });
+
+Task("Default")
+    .IsDependentOn("libs");
 
 RunTarget (TARGET);
 

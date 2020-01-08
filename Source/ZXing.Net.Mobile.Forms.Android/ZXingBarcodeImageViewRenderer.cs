@@ -5,66 +5,75 @@ using ZXing.Net.Mobile.Forms.Android;
 using Android.Runtime;
 using Xamarin.Forms.Platform.Android;
 using System.ComponentModel;
+using Android.Content;
 using Android.Widget;
 using ZXing.Mobile;
 
-[assembly:ExportRenderer(typeof(ZXingBarcodeImageView), typeof(ZXingBarcodeImageViewRenderer))]
+[assembly: ExportRenderer(typeof(ZXingBarcodeImageView), typeof(ZXingBarcodeImageViewRenderer))]
 namespace ZXing.Net.Mobile.Forms.Android
 {
-    [Preserve(AllMembers = true)]
-    public class ZXingBarcodeImageViewRenderer : ViewRenderer<ZXingBarcodeImageView, ImageView>
-    {       
-        public static void Init ()
-        {
-            var temp = DateTime.Now;
-        }
+	[Preserve(AllMembers = true)]
+	public class ZXingBarcodeImageViewRenderer : ViewRenderer<ZXingBarcodeImageView, ImageView>
+	{
 
-        ZXingBarcodeImageView formsView;
-        ImageView imageView;
+		public ZXingBarcodeImageViewRenderer(Context context) : base(context)
+		{
 
-        protected override void OnElementPropertyChanged (object sender, PropertyChangedEventArgs e)
-        {
-            regenerate ();
+		}
 
-            base.OnElementPropertyChanged (sender, e);
-        }
+		public static void Init()
+		{
+			var temp = DateTime.Now;
+		}
 
-        protected override void OnElementChanged(ElementChangedEventArgs<ZXingBarcodeImageView> e)
-        {
-            formsView = Element;
+		ZXingBarcodeImageView formsView;
+		ImageView imageView;
 
-            if (imageView == null) {
+		protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+		{
+			regenerate();
 
-                imageView = new ImageView (Xamarin.Forms.Forms.Context);
+			base.OnElementPropertyChanged(sender, e);
+		}
 
-                base.SetNativeControl (imageView);     
-            }
+		protected override void OnElementChanged(ElementChangedEventArgs<ZXingBarcodeImageView> e)
+		{
+			formsView = Element;
 
-            regenerate ();
+			if (imageView == null)
+			{
 
-            base.OnElementChanged (e);
-        }
+				imageView = new ImageView(Xamarin.Forms.Forms.Context);
 
-        void regenerate ()
-        {
-            if (formsView != null && formsView.BarcodeValue != null)
-            {
-                var writer = new ZXing.Mobile.BarcodeWriter();
+				base.SetNativeControl(imageView);
+			}
 
-                if (formsView != null && formsView.BarcodeOptions != null)
-                    writer.Options = formsView.BarcodeOptions;
-                if (formsView != null && formsView.BarcodeFormat != null)
-                    writer.Format = formsView.BarcodeFormat;
+			regenerate();
 
-                var value = formsView != null ? formsView.BarcodeValue : string.Empty;
+			base.OnElementChanged(e);
+		}
 
-                Device.BeginInvokeOnMainThread (() => {
-                    var image = writer.Write (value);
+		void regenerate()
+		{
+			if (formsView != null && !string.IsNullOrWhiteSpace(formsView.BarcodeValue))
+			{
+				var writer = new ZXing.Mobile.BarcodeWriter();
 
-                    imageView.SetImageBitmap (image);
-                });
-            }
-        }
-    }
+				if (formsView != null && formsView.BarcodeOptions != null)
+					writer.Options = formsView.BarcodeOptions;
+				if (formsView != null && formsView.BarcodeFormat != null)
+					writer.Format = formsView.BarcodeFormat;
+
+				var value = formsView != null ? formsView.BarcodeValue : string.Empty;
+
+				Device.BeginInvokeOnMainThread(() =>
+				{
+					var image = writer.Write(value);
+
+					imageView.SetImageBitmap(image);
+				});
+			}
+		}
+	}
 }
 

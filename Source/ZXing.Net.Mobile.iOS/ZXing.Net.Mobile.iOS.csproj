@@ -75,7 +75,9 @@
     <Compile Include="AVCaptureScannerView.cs" />
     <Compile Include="AVCaptureScannerViewController.cs" />
     <Compile Include="BarcodeWriter.cs" />
+    <Compile Include="BaseiOSScannerView.cs" />
     <Compile Include="BitmapRenderer.cs" />
+    <Compile Include="IiOSScannerView.cs" />
     <Compile Include="IScannerViewController.cs" />
     <Compile Include="MobileBarcodeScanner.cs" />
     <Compile Include="RGBLuminanceSourceiOS.cs" />
