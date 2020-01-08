@@ -3,16 +3,18 @@
     <metadata>
         <id>StyleTech.ZXing.Net.Mobile.Forms</id>
         <version>$version$</version>
-        <title>ZXing.Net.Mobile Barcode Scanner for Xamarin.Forms</title>
+        <title>(StyleTech Modified) ZXing.Net.Mobile Barcode Scanner for Xamarin.Forms</title>
         <authors>Redth, StyleTech</authors>
-        <licenseUrl>http://raw.github.com/Redth/ZXing.Net.Mobile/master/License.md</licenseUrl>
-        <projectUrl>http://github.com/Redth/ZXing.Net.Mobile</projectUrl>
+        <licenseUrl>https://raw.githubusercontent.com/StyleTech-Hull/ZXing.Net.Mobile/master/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/StyleTech-Hull/ZXing.Net.Mobile</projectUrl>
         <iconUrl>http://raw.github.com/Redth/ZXing.Net.Mobile/master/Art/ZXing.Net.Mobile-Icon.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
+             This is a modified version of https://github.com/Redth/ZXing.Net.Mobile as the library has become somewhat stale. This version has several xamarin forms specific fixes incorporated.
+
             ZXing.Net.Mobile is a C#/.NET library based on the open source Barcode Library: ZXing (Zebra Crossing), using the ZXing.Net Port. It works with Xamarin.iOS, Xamarin.Android, Windows Phone (Silverlight), and Windows Universal. The goal of ZXing.Net.Mobile is to make scanning barcodes as effortless and painless as possible in your own applications.
 
-            See https://github.com/Redth/ZXing.Net.Mobile/releases for release notes.
+            See https://github.com/StyleTech-Hull/ZXing.Net.Mobile/releases for release notes.
         </description>
         <summary>ZXing Barcode Scanning for your Xamarin.iOS, Xamarin.Android, Windows Phone (Silverlight), and Windows Universal apps!</summary>
         <copyright />
