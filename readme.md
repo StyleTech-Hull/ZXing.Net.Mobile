@@ -6,6 +6,17 @@ This is a modified version of https://github.com/Redth/ZXing.Net.Mobile as the l
 
 ZXing.Net.Mobile is a C#/.NET library based on the open source Barcode Library: [ZXing (Zebra Crossing)](https://github.com/zxing/zxing), using the [ZXing.Net Port](https://github.com/micjahn/ZXing.Net).  It works with Xamarin.iOS, Xamarin.Android, Xamarin.Mac, and Windows Phone.  The goal of ZXing.Net.Mobile is to make scanning barcodes as effortless and painless as possible in your own applications.  The new iOS7 AVCaptureSession barcode scanning is now also supported!
 
+### Building Packages
+The build script doesn't appear to be working correctly. To manually build:
+
+1. Ensure nuget.exe command line tools is downloaded ([download latest](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe))
+2. Open powershell/command prompt terminal in the root of the directory.
+3. Run the following commands specifing the correct version strings
+```csharp  
+	nuget.exe pack "ZXing.Net.Mobile.nuspec" -Version 2.4.1.1
+	nuget.exe pack "ZXing.Net.Mobile.Forms.nuspec" -Version 2.4.1.1
+```
+
 ### Usage
 The simplest example of using ZXing.Net.Mobile looks something like this:
 
