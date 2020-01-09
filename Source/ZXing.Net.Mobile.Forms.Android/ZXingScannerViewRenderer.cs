@@ -105,14 +105,24 @@ namespace ZXing.Net.Mobile.Forms.Android
 
 		private async Task<bool> verifyPermissions()
 		{
-			if (appContext is Activity activity)
+			if (!(appContext is Activity activity))
 			{
-				var isAllowed = await ZXing.Net.Mobile.Android.PermissionsHandler.RequestPermissionsAsync(activity);
-				_isSetupDefered = !isAllowed;
-				return isAllowed;
+				return false;
 			}
 
-			return false;
+			bool isAllowed;
+
+			if (formsView.Options.ShouldRequestPermissions)
+			{
+				isAllowed = await Mobile.Android.PermissionsHandler.RequestPermissionsAsync(activity);
+			}
+			else
+			{
+				isAllowed = !Mobile.Android.PermissionsHandler.NeedsPermissionRequest(activity);
+			}
+
+			_isSetupDefered = !isAllowed;
+			return isAllowed;
 		}
 
 		private async Task setupView()

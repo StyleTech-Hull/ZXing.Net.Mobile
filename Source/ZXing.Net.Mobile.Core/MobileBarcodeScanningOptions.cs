@@ -20,6 +20,7 @@ namespace ZXing.Mobile
 			this.InitialDelayBeforeAnalyzingFrames = 300;
             this.DelayBetweenContinuousScans = 1000;
             UseNativeScanning = false;
+            ShouldRequestPermissions = true;
 		}
 
 		public CameraResolutionSelectorDelegate CameraResolutionSelector { get;set; }
@@ -42,6 +43,8 @@ namespace ZXing.Mobile
 
 		public int DelayBetweenAnalyzingFrames { get;set;}
 		public int InitialDelayBeforeAnalyzingFrames { get;set; }
+
+		public bool ShouldRequestPermissions { get; set; }
 
 		public static MobileBarcodeScanningOptions Default
 		{
@@ -89,7 +92,7 @@ namespace ZXing.Mobile
 				hints.Add(DecodeHintType.PURE_BARCODE, this.PureBarcode.Value);
 
 			if (this.PossibleFormats != null && this.PossibleFormats.Count > 0)
-			hints.Add(DecodeHintType.POSSIBLE_FORMATS, this.PossibleFormats);
+				hints.Add(DecodeHintType.POSSIBLE_FORMATS, this.PossibleFormats);
 
 			reader.Hints = hints;
 
